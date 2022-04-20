@@ -4,6 +4,9 @@ const request = supertest("https://api.haibooks.com/api/v2/");
 const TOKEN =
   "2d0472b6c3bed0e35562b59ea8fc41033f22993040d479cac9d0313c126eeeeb";
 
+
+// if existed email is entered, then password change email should be sent.
+
 describe("Forgot Password", () => {
   it("POST existed email entered /account/forgotpassword", () => {
     const data = {
@@ -21,6 +24,8 @@ describe("Forgot Password", () => {
   });
 
  
+// if existed email is not enter error should be generated with 126 code..
+
     it("POST not existed email entered /account/forgotpassword", () => {
       const data = {
         email: "secn.tuzun@arfitect.com",
@@ -37,6 +42,8 @@ describe("Forgot Password", () => {
           // console.log(res.body)
         });
     });
+
+// if empty email field then 124 error message should be returned
 
     it("POST no email entered /account/forgotpassword", () => {
       const data = {
