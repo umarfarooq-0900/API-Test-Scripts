@@ -8,50 +8,11 @@ const TOKEN =
 
 
 
-describe("My Money", () => {
-  it("GET /mymoney/moneytotal/allexpenses?search=", () => {
+describe("My Expense", () => {
+  it("GET mymoney/expense/list/all", () => {
 
     return request
-    .get("mymoney/moneytotal/allexpenses?search=")
-    .set({companyId: '2611181'})
-    .set('Authorization', `Bearer ${TOKEN}`)
-    .then((res) => {
-      expect(res.statusCode).to.eq(200)
-      // console.log(res.body)
-    });
-
-  });
-
-  it("GET /mymoney/moneytotal/expenses", () => {
-
-    return request
-    .get("mymoney/moneytotal/expenses")
-    .set({companyId: '2611181'})
-    .set('Authorization', `Bearer ${TOKEN}`)
-    .then((res) => {
-      expect(res.statusCode).to.eq(200)
-      // console.log(res.body)
-    });
-
-  });
-
-  it("GET mymoney/moneytotal/mileages", () => {
-
-    return request
-    .get("mymoney/moneytotal/mileages")
-    .set({companyId: '2611181'})
-    .set('Authorization', `Bearer ${TOKEN}`)
-    .then((res) => {
-      expect(res.statusCode).to.eq(200)
-      // console.log(res.body)
-    });
-
-  });
-
-  it("GET /mymoney/moneytotal/invoices", () => {
-
-    return request
-    .get("mymoney/moneytotal/invoices")
+    .get("mymoney/expense/list/all")
     .set({companyId: '2611181'})
     .set('Authorization', `Bearer ${TOKEN}`)
     .then((res) => {
@@ -62,10 +23,10 @@ describe("My Money", () => {
   });
 
 
-  it("GET /mymoney/moneytotal/bills", () => {
+  it("GET mymoney/expense/list/paid", () => {
 
     return request
-    .get("mymoney/moneytotal/bills")
+    .get("mymoney/expense/list/paid")
     .set({companyId: '2611181'})
     .set('Authorization', `Bearer ${TOKEN}`)
     .then((res) => {
@@ -74,18 +35,60 @@ describe("My Money", () => {
     });
 
   });
-  
-  it("GET   /mymoney/moneytotal/documentcountsbystatus", () => {
+
+  it("GET mymoney/expense/list/unpaid", () => {
 
     return request
-    .get("mymoney/moneytotal/documentcountsbystatus")
+    .get("mymoney/expense/list/unpaid")
     .set({companyId: '2611181'})
     .set('Authorization', `Bearer ${TOKEN}`)
     .then((res) => {
       expect(res.statusCode).to.eq(200)
       // console.log(res.body)
     });
-  
+
+  });
+
+  it("GET mymoney/expense/list/partiallypaid", () => {
+
+    return request
+    .get("mymoney/expense/list/partiallypaid")
+    .set({companyId: '2611181'})
+    .set('Authorization', `Bearer ${TOKEN}`)
+    .then((res) => {
+      expect(res.statusCode).to.eq(200)
+      // console.log(res.body)
+    });
+
+    
+  });
+
+  it("GET mymoney/expense/list/overpaid", () => {
+
+    return request
+    .get("mymoney/expense/list/overpaid")
+    .set({companyId: '2611181'})
+    .set('Authorization', `Bearer ${TOKEN}`)
+    .then((res) => {
+      expect(res.statusCode).to.eq(200)
+      // console.log(res.body)
+    });
+
+    
+  });
+
+  it("GET mymoney/expense/list/drafts", () => {
+
+    return request
+    .get("mymoney/expense/list/drafts")
+    .set({companyId: '2611181'})
+    .set('Authorization', `Bearer ${TOKEN}`)
+    .then((res) => {
+      expect(res.statusCode).to.eq(200)
+      // console.log(res.body)
+    });
+
+    
   });
 
 });
