@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import supertest from "supertest";
 const request = supertest("https://api.haibooks.com/api/v2/");
-const TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik5SaElhclpQWGh3aTJOOU5FRmRNZDlQZ2F5Y1EzUTVEIiwibmFtZWlkIjoibGwyWTJsVmttUlE9IiwibmJmIjoxNjUwMzUxOTg2LCJleHAiOjE2NTAzNTU1ODYsImlhdCI6MTY1MDM1MTk4Nn0.8RvUbUPiQbvnZHWp-8lpG4Mi5WXs1p9mZMEs0rxTAcE";
+import Store from "./store.js";
+
 
 describe("Mileage", () => {
     /**
@@ -11,8 +11,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/all?page=1", () => {
         return request
             .get("mymoney/list/all?page=1")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId})
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -25,8 +25,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/all?page=", () => {
         return request
             .get("mymoney/list/all?page=")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(400)
                 // console.log(res.body)
@@ -39,8 +39,8 @@ describe("Mileage", () => {
     it("GET mymoney", () => {
         return request
             .get("mymoney/list/all?page=")
-            .set({ companyId: '261118' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId})
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(403)
                 // console.log(res.body)
@@ -53,8 +53,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/paid?page=1", () => {
         return request
             .get("mymoney/list/paid?page=1")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -67,8 +67,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/unpaid?page=1", () => {
         return request
             .get("mymoney/list/paid?page=1")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -81,8 +81,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/partiallypaid?page=1", () => {
         return request
             .get("mymoney/list/paid?page=1")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId})
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -95,8 +95,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/overpaid?page=1", () => {
         return request
             .get("mymoney/list/paid?page=1")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -109,8 +109,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/drafts?page=1", () => {
         return request
             .get("mymoney/list/paid?page=1")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId:Store.companyId})
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -124,8 +124,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/search?page=1&pagesize=20&search=umer", () => {
         return request
             .get("mymoney/list/search?page=1&pagesize=20&search=umer")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 let valid = true
                 res.body.data.items.map((item) => {
@@ -146,8 +146,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/search?page=1&pagesize=20&search=smer", () => {
         return request
             .get("mymoney/list/search?page=1&pagesize=20&search=smer")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 let valid = true
                 res.body.data.items.map((item) => {
@@ -169,8 +169,8 @@ describe("Mileage", () => {
     it("GET mymoney/list/search?page=1&pagesize=20&search=", () => {
         return request
             .get("mymoney/list/search?page=1&pagesize=20&search=")
-            .set({ companyId: '2611181' })
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set({ companyId: Store.companyId })
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)
@@ -204,9 +204,9 @@ describe("Mileage", () => {
 
         return request
             .post("mymoney/list/search?page=1&pagesize=20&search=")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId})
             .send(data)
-            .set('Authorization', `Bearer ${TOKEN}`)
+            .set('Authorization', `Bearer ${Store.token}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
                 // console.log(res.body)

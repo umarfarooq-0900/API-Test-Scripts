@@ -1,20 +1,24 @@
 import supertest from "supertest";
 import { expect } from "chai";
 const request = supertest("https://api.haibooks.com/api/v2/");
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik5SaElhclpQWGh3aTJOOU5FRmRNZDlQZ2F5Y1EzUTVEIiwibmFtZWlkIjoibGwyWTJsVmttUlE9IiwibmJmIjoxNjUwMzUxOTg2LCJleHAiOjE2NTAzNTU1ODYsImlhdCI6MTY1MDM1MTk4Nn0.8RvUbUPiQbvnZHWp-8lpG4Mi5WXs1p9mZMEs0rxTAcE";
+// const {TOKEN} = require('./0-token.js')
+import "babel-polyfill";
+import Store from "./store.js";
 
-describe("Change Password", () => {
+
+
+ describe("Change Password", async  () => {
   // Happy flow getting 200 response code with empty response body
-
   it("POST Password Changed /profile/", () => {
+
+
     const data = {
       OldPassword: "Umar123456",
       NewPassword: "Umar12345",
     };
     return request
       .post("profile/changepassword")
-      .set("Authorization", `Bearer ${TOKEN}`)
+      .set("Authorization", `Bearer ${Store.token}`)
       .send(data)
       .then((res) => {
         // expect(res.body.data.success).to.eq(true)
@@ -35,7 +39,7 @@ describe("Change Password", () => {
     };
     return request
       .post("profile/changepassword")
-      .set("Authorization", `Bearer ${TOKEN}`)
+      .set("Authorization", `Bearer ${Store.token}`)
       .send(data)
       .then((res) => {
         // expect(res.body.data.success).to.eq(true)
@@ -55,7 +59,7 @@ describe("Change Password", () => {
 
     return request
       .post("profile/changepassword")
-      .set("Authorization", `Bearer ${TOKEN}`)
+      .set("Authorization", `Bearer ${Store.token}`)
       .send(data)
       .then((res) => {
         // expect(res.body.data.success).to.eq(true)
@@ -75,7 +79,7 @@ describe("Change Password", () => {
 
     return request
       .post("profile/changepassword")
-      .set('Authorization', `Bearer ${TOKEN}`)
+      .set('Authorization', `Bearer ${Store.token}`)
       .send(data)
       .then((res) => {
         // expect(res.body.data.success).to.eq(true)
@@ -94,7 +98,7 @@ describe("Change Password", () => {
 
     return request
       .post("profile/changepassword")
-      .set('Authorization', `Bearer ${TOKEN}`)
+      .set('Authorization', `Bearer ${Store.token}`)
       .send(data)
       .then((res) => {
         // expect(res.body.data.success).to.eq(true)
@@ -113,7 +117,7 @@ describe("Change Password", () => {
 
     return request
       .post("profile/changepassword")
-      .set('Authorization', `Bearer ${TOKEN}`)
+      .set('Authorization', `Bearer ${Store.token}`)
       .send(data)
       .then((res) => {
         // expect(res.body.data.success).to.eq(true)
@@ -134,7 +138,7 @@ describe("Change Password", () => {
   
       return request
         .post("profile/changepassword")
-        .set('Authorization', `Bearer ${TOKEN}`)
+        .set('Authorization', `Bearer ${Store.token}`)
         .send(data)
         .then((res) => {
           // expect(res.body.data.success).to.eq(true)
@@ -154,7 +158,7 @@ describe("Change Password", () => {
   
       return request
         .post("profile/changepassword")
-        .set('Authorization', `Bearer ${TOKEN}`)
+        .set('Authorization', `Bearer ${Store.token}`)
         .send(data)
         .then((res) => {
           // expect(res.body.data.success).to.eq(true)
@@ -173,7 +177,7 @@ describe("Change Password", () => {
   
       return request
         .post("profile/changepassword")
-        .set('Authorization', `Bearer ${TOKEN}`)
+        .set('Authorization', `Bearer ${Store.token}`)
         .send(data)
         .then((res) => {
       
