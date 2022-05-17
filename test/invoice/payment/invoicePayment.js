@@ -2,15 +2,14 @@
 
 import supertest from "supertest";
 import { expect } from "chai";
+import Store from "../../store";
 const request = supertest("https://api.haibooks.com/api/v2/");
-const TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik5SaElhclpQWGh3aTJOOU5FRmRNZDlQZ2F5Y1EzUTVEIiwibmFtZWlkIjoibGwyWTJsVmttUlE9IiwibmJmIjoxNjUwMzUxOTg2LCJleHAiOjE2NTAzNTU1ODYsImlhdCI6MTY1MDM1MTk4Nn0.8RvUbUPiQbvnZHWp-8lpG4Mi5WXs1p9mZMEs0rxTAcE";
-
+const TOKEN = Store.token
 describe("List Payment", () => {
     it("GET accounts/invoice/payment/metadata?id=453133", () => {
         return request
             .get("accounts/invoice/payment/metadata?id=453133")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
@@ -20,7 +19,7 @@ describe("List Payment", () => {
     it("GET accounts/invoice/payment/metadata?id=abc", () => {
         return request
             .get("accounts/invoice/payment/metadata?id=abc")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(403)
@@ -30,7 +29,7 @@ describe("List Payment", () => {
     it("GET accounts/invoice/creditnote/payment/metadata?id=453133", () => {
         return request
             .get("accounts/invoice/creditnote/payment/metadata?id=453133")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
@@ -40,7 +39,7 @@ describe("List Payment", () => {
     it("GET accounts/invoice/creditnote/payment/metadata?id=abc", () => {
         return request
             .get("accounts/invoice/creditnote/payment/metadata?id=abc")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(403)
@@ -61,7 +60,7 @@ describe("List Payment", () => {
 
         return request
             .post("accounts/invoice/payment")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .send(body)
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
@@ -86,7 +85,7 @@ describe("List Payment", () => {
 
         return request
             .post("accounts/invoice/payment")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .send(body)
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
@@ -97,7 +96,7 @@ describe("List Payment", () => {
     it("DELETE accounts/invoice/payment/delete?paymentId=283", () => {
         return request
             .delete("accounts/invoice/payment/delete?paymentId=238")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(200)
@@ -107,7 +106,7 @@ describe("List Payment", () => {
     it("DELETE accounts/invoice/payment/delete?paymentId=abc", () => {
         return request
             .delete("accounts/invoice/payment/delete?paymentId=abc")
-            .set({ companyId: '2611181' })
+            .set({ companyId: Store.companyId })
             .set('Authorization', `Bearer ${TOKEN}`)
             .then((res) => {
                 expect(res.statusCode).to.eq(403)

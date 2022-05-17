@@ -1,8 +1,7 @@
 import supertest from "supertest";
 import { expect } from "chai";
 const request = supertest("https://api.haibooks.com/api/v2/");
-const TOKEN =
-  "2d0472b6c3bed0e35562b59ea8fc41033f22993040d479cac9d0313c126eeeeb";
+import Store from "./store.js";
 
 
 // if existed email is entered, then password change email should be sent.
